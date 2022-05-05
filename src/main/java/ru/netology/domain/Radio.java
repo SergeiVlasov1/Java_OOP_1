@@ -1,56 +1,66 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int radioStation;
-    private int radioVolume;
 
+    private int currentVolume;
+    private int currentRadioStation;
+    private int numberRadioStation = 10 - 1;
 
-    public int getRadioStation() {
-        return radioStation;
+    public Radio(int numberRadioStation) {
+        this.numberRadioStation = numberRadioStation - 1;
     }
 
-    public void setRadioStation(int radioStation) {
-        if (radioStation < 0) {
-            radioStation = 9;
+    public Radio() {
+
+    }
+
+    public int getNumberRadioStation() {
+        return this.numberRadioStation;
+    }
+
+
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation < 0) {
+            currentRadioStation = 9;
         }
-        if (radioStation > 9) {
-            radioStation = 0;
+        if (currentRadioStation > 9) {
+            currentRadioStation = 0;
         }
-        this.radioStation = radioStation;
-
+        this.currentRadioStation = currentRadioStation;
     }
 
-    public void setNext() {
-        setRadioStation(radioStation = radioStation + 1);
+    public void setNextCurrentRadioStation() {
+        setCurrentRadioStation(currentRadioStation = currentRadioStation + 1);
     }
 
-    public void setPrev() {
-        setRadioStation(radioStation = radioStation - 1);
+    public void setPreviousCurrentRadioStation() {
+        setCurrentRadioStation(currentRadioStation = currentRadioStation - 1);
     }
 
-
-    public int getRadioVolume() {
-        return radioVolume;
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
-    public void setRadioVolume(int radioVolume) {
-        if (radioVolume < 0) {
-            radioVolume = 0;
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume <= 0) {
+            currentVolume = 0;
         }
-        if (radioVolume > 10) {
-            radioVolume = 10;
+        if (currentVolume >= 10) {
+            currentVolume = 10;
         }
-        this.radioVolume = radioVolume;
-
+        this.currentVolume = currentVolume;
     }
 
-    public void minVolume() {
-        setRadioVolume(radioVolume = radioVolume - 1);
+    public void setVolumeUp() {
+        setCurrentVolume(currentVolume = currentVolume + 1);
     }
 
-    public void maxVolume() {
-        setRadioVolume(radioVolume = radioVolume + 1);
+    public void setVolumeDown() {
+        setCurrentVolume(currentVolume = currentVolume - 1);
     }
-
 
 }
